@@ -1,65 +1,12 @@
 import random
-wordList = ["aardvark", "baboon", "camel"]
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+import ASCII
+import words
+
+print(ASCII.logo)
 
 #Choosing a random word from list
-chosenWord = random.choice(wordList)
-print(chosenWord)       #for testing
+chosenWord = random.choice(words.wordList)
+#print(chosenWord)       #for testing
 
 #Creating empty list
 guessWord = ['_'] * len(chosenWord)
@@ -79,15 +26,18 @@ while ('_' in guessWord and lives != 0):
         i += 1
     if flag != True:
         lives -= 1
-        print(f"\nWrong Choice!!\nLives left: {lives}\n" + stages[lives])
-    print(f"{' '.join(guessWord)}")
+        print("\n\nWrong Guess!!")
+    else:
+        print("\n\nCorrect Guess!!")
+    print(f"\nLives left: {lives}\n" + ASCII.stages[lives])
+    print(f"\nWord: {' '.join(guessWord)}\n")
     
 
 if lives == 0:
-    print("You lose")
+    print(f"You Lose :(\n\nCorrect word was: {chosenWord}\n\n\n")
 
 if '_' not in guessWord:
-    print("You Win")
+    print("You Win !!!\n")
 
 
 
